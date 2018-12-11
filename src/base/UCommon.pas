@@ -129,7 +129,7 @@ implementation
 uses
   Math,
   {$IFDEF Delphi}
-  Dialogs,
+//  Dialogs,
   {$ENDIF}
   sdl2,
   UFilesystem,

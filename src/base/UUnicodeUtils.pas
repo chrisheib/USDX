@@ -419,7 +419,7 @@ var
   StrPtr: PAnsiChar;
 begin
   Result := true;
-  StrPtr := PChar(str);
+  StrPtr := PAnsiChar(AnsiString(PChar(str)));
   while (StrPtr^ <> #0) do
   begin
     if (not NextCharUTF8(StrPtr, Ch)) then

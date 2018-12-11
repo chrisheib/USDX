@@ -38,8 +38,8 @@ uses
   Classes,
   {$IFDEF MSWINDOWS}
   Windows,
-  LazUTF8Classes,
-  LazFileUtils,
+//  LazUTF8Classes,
+//  LazFileUtils,
   {$ENDIF}
   UPath;
 
@@ -293,7 +293,8 @@ end;
 
 function TFileSystemImpl.FileExists(const Name: IPath): boolean;
 begin
-  Result := FileExistsUTF8(Name.ToUTF8());//SysUtils.FileExists(Name.ToWide());
+raise Exception.Create('TFileSystemImpl.FileExists');
+//  Result := FileExistsUTF8(Name.ToUTF8());//SysUtils.FileExists(Name.ToWide());
 end;
 
 function TFileSystemImpl.FileGetAttr(const FileName: IPath): Cardinal;

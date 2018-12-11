@@ -39,12 +39,12 @@ uses
   Classes,
   IniFiles,
   {$IFDEF MSWINDOWS}
-  LazFileUtils,
-  LazUTF8,
-  LazUTF8Classes,
+//  LazFileUtils,
+//  LazUTF8,
+//  LazUTF8Classes,
   {$ENDIF}
   UConfig,
-  UUnicodeStringHelper,
+  //UUnicodeStringHelper,
   SDL2;
 
 type
