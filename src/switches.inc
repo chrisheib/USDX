@@ -30,7 +30,7 @@
     {$DEFINE DELPHI_7}
     {$DEFINE DELPHI_7_UP}
   {$ELSE} // unsupported
-    {$WARN ERROR 'Unsupported compiler version'}
+    {$DEFINE DELPHI_10_UP}
   {$IFEND}
 
   // inline directive introduced with Delphi 2005

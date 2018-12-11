@@ -17,7 +17,7 @@
 {$DEFINE HaveFFmpeg}
 //the required DLLs can be downloaded here: https://ffmpeg.zeranoe.com/builds/win32/shared/ffmpeg-20150814-git-affbecb-win32-shared.7z
 {$IF Defined(HaveFFmpeg)}
-  {$MACRO ON}
+  //{$MACRO ON}
   {$IFNDEF FFMPEG_DIR}
     {$IF (4 > 0) or (2 > 0)}
       {$DEFINE FFMPEG_DIR := 'ffmpeg-2.8'}

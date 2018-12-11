@@ -35,7 +35,8 @@ interface
 
 uses
   sdl2,
-  UPath;
+  UPath,
+  vcl.imaging.jpeg;
 
 {$DEFINE HaveBMP}
 {$DEFINE HaveJPG}
@@ -86,8 +87,8 @@ uses
   {$ENDIF}
   {$IFDEF HaveJPG}
     {$IFDEF Delphi}
-    Graphics,
-    jpeg,
+    //Graphics,
+    //jpeg,
     {$ELSE}
     jpeglib,
     jerror,
@@ -385,7 +386,8 @@ begin
     end;
 
     // create and setup bitmap
-    Bitmap := TBitmap.Create;
+    VCL.
+    Bitmap := VCL.graphics.TBitmap.Create;
     Bitmap.PixelFormat := pf24bit;
     Bitmap.Width  := Surface.w;
     Bitmap.Height := Surface.h;

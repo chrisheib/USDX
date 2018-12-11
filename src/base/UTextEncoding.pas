@@ -30,7 +30,7 @@ interface
 {$IFDEF FPC}
   {$MODE Delphi}
 {$ENDIF}
-{$codepage UTF8}
+//{$codepage UTF8}
 {$I switches.inc}
 
 uses

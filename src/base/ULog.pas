@@ -35,7 +35,7 @@ interface
 
 uses
   Classes,
-  UPath;
+  UPath, Winapi.Windows;
 
 (*
  * LOG_LEVEL_[TYPE] defines the "minimum" index for logs of type TYPE. Each

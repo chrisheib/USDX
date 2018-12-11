@@ -26,7 +26,7 @@
 program ultrastardx;
 
 {$IFDEF MSWINDOWS}
-  {$R '..\res\link.res' '..\res\link.rc'}
+//  {$R '..\res\link.res' '..\res\link.rc'}
 {$ENDIF}
 
 {$IFDEF FPC}
