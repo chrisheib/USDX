@@ -64,6 +64,7 @@ const
 
   // define level that Log(File)Level is initialized with
   LOG_LEVEL_DEFAULT      = LOG_LEVEL_WARN;
+  //LOG_LEVEL_DEFAULT      = LOG_LEVEL_DEBUG_MAX;
   LOG_FILE_LEVEL_DEFAULT = LOG_LEVEL_ERROR;
 
   CONSOLE_SCROLLBACK_SIZE = 512;
