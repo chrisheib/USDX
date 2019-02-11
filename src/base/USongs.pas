@@ -223,6 +223,8 @@ end;
 procedure TSongs.int_LoadSongList;
 var
   I: integer;
+  Song : TSong;
+  Strings: TStringlist;
 begin
   try
     fProcessing := true;
@@ -230,8 +232,15 @@ begin
     Log.LogStatus('Searching For Songs', 'SongList');
 
     // browse directories
+
+    //Heibutzki: DAUERT LANGE!!!
+
     for I := 0 to SongPaths.Count-1 do
       BrowseDir(SongPaths[I] as IPath);
+
+    //for Song in Songlist do begin
+    //  Song.
+    //end;
 
     if assigned(CatSongs) then
       CatSongs.Refresh;
@@ -248,9 +257,9 @@ begin
       ScreenSong.OnShow; // refresh ScreenSong
     end;
 
+
   finally
     Log.LogStatus('Search Complete', 'SongList');
-
     fParseSongDirectory := false;
     fProcessing         := false;
   end;
