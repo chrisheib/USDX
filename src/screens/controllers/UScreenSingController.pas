@@ -663,13 +663,16 @@ begin
     ColP1 := GetPlayerColor(Ini.PlayerColor[0]);
     ColP2 := GetPlayerColor(Ini.PlayerColor[1]);
 
-    // set custom options
-    case Ini.LyricsFont of
-      0: // normal fonts
-      begin
-        LyricsDuetP1.FontStyle := ftNormal;
-        LyricsDuetP2.FontStyle := ftNormal;
+    LyricsDuetP1.FontFamily := Ini.LyricsFont;
+    LyricsDuetP2.FontFamily := Ini.LyricsFont;
 
+    LyricsDuetP1.FontStyle := Ini.LyricsStyle;
+    LyricsDuetP2.FontStyle := Ini.LyricsStyle;
+
+    // set custom options
+    case Ini.LyricsStyle of
+      0, 1: // regular/bold (non-outline) fonts
+      begin
         LyricsDuetP1.LineColor_en.R := Skin_FontR;
         LyricsDuetP1.LineColor_en.G := Skin_FontG;
         LyricsDuetP1.LineColor_en.B := Skin_FontB;
@@ -701,19 +704,8 @@ begin
         LyricsDuetP2.LineColor_act.A := 1;
 
       end;
-      1, 2: // outline fonts
+      2: // outline font
       begin
-        if (Ini.LyricsFont = 1) then
-        begin
-          LyricsDuetP1.FontStyle := ftOutline1;
-          LyricsDuetP2.FontStyle := ftOutline1;
-        end
-        else
-        begin
-          LyricsDuetP1.FontStyle := ftOutline2;
-          LyricsDuetP2.FontStyle := ftOutline2;
-        end;
-
         LyricsDuetP1.LineColor_en.R := 0.7;
         LyricsDuetP1.LineColor_en.G := 0.7;
         LyricsDuetP1.LineColor_en.B := 0.7;
@@ -750,19 +742,30 @@ begin
   else
   begin
 
-    case Ini.LyricsFont of
-      0: // normal fonts
-      begin
-        Lyrics.FontStyle := ftNormal;
+    Lyrics.FontFamily := Ini.LyricsFont;
+    Lyrics.FontStyle := Ini.LyricsStyle;
 
-        Lyrics.LineColor_en.R := Skin_FontR;
-        Lyrics.LineColor_en.G := Skin_FontG;
-        Lyrics.LineColor_en.B := Skin_FontB;
+    case Ini.LyricsStyle of
+      0, 1: // regular/bold (non-outline) font
+      begin
+        if (Ini.JukeboxActualLineColor = High(UIni.IActualLineColor)) then
+          Col := GetJukeboxLyricOtherColor(1)
+        else
+          Col := GetLyricGrayColor(Ini.JukeboxActualLineColor);
+
+        Lyrics.LineColor_en.R := Col.R;
+        Lyrics.LineColor_en.G := Col.G;
+        Lyrics.LineColor_en.B := Col.B;
         Lyrics.LineColor_en.A := 1;
 
-        Lyrics.LineColor_dis.R := 0.2;
-        Lyrics.LineColor_dis.G := 0.2;
-        Lyrics.LineColor_dis.B := 0.2;
+        if (Ini.JukeboxNextLineColor = High(UIni.INextLineColor)) then
+          Col := GetJukeboxLyricOtherColor(2)
+        else
+          Col := GetLyricGrayColor(Ini.JukeboxNextLineColor);
+
+        Lyrics.LineColor_dis.R := Col.R;
+        Lyrics.LineColor_dis.G := Col.G;
+        Lyrics.LineColor_dis.B := Col.B;
         Lyrics.LineColor_dis.A := 1;
 
         if (Ini.JukeboxSingLineColor = High(UIni.ISingLineColor)) then
@@ -775,13 +778,8 @@ begin
         Lyrics.LineColor_act.B := Col.B; //0.8;
         Lyrics.LineColor_act.A := 1;
       end;
-      1, 2: // outline fonts
+      2: // outline fonts
       begin
-        if (Ini.LyricsFont = 1) then
-          Lyrics.FontStyle := ftOutline1
-        else
-          Lyrics.FontStyle := ftOutline2;
-
         if (Ini.JukeboxSingLineColor = High(UIni.ISingLineColor)) then
           Col := GetJukeboxLyricOtherColor(0)
         else
